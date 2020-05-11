@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SimpleWavChecker
@@ -44,7 +45,7 @@ namespace SimpleWavChecker
             }
             catch(Exception e)
             {
-                error = "Unexpected error: " + e.Message;
+                error = "Unexpected error: " + Cleanup(e.Message);
             }
             return string.Join("\t",
                 audioFilePath,
@@ -55,6 +56,11 @@ namespace SimpleWavChecker
                 wave.BlockAlign,
                 wave.BitsPerSample,
                 error);
+        }
+
+        private string Cleanup(string inputString)
+        {
+            return Regex.Replace(inputString, "\\s+", " ");
         }
     }
 }
