@@ -42,6 +42,10 @@ namespace SimpleWavChecker
             {
                 error = e.Message;
             }
+            catch(Exception e)
+            {
+                error = e.Message;
+            }
             return string.Join("\t",
                 audioFilePath,
                 wave.AudioTypeId,
