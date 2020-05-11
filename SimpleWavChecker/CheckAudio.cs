@@ -44,7 +44,7 @@ namespace SimpleWavChecker
             }
             catch(Exception e)
             {
-                error = e.Message;
+                error = "Unexpected error: " + e.Message;
             }
             return string.Join("\t",
                 audioFilePath,
